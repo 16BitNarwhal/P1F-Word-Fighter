@@ -25,7 +25,6 @@ public class Fighter extends Mover
     
     public void act() {
         super.act();
-        runAnim.animate();
     }
     
     /*
