@@ -17,5 +17,12 @@ public class TItleScreen extends World
     {     
         super(1000, 600, 1);
         addObject(new TitleScreenPlayer(),0,0);
+        prepare();
     }
+     private void prepare()
+    {
+        Title title = new Title();
+        addObject(title,500,450);
+    }
+
 }
