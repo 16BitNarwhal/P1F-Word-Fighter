@@ -24,5 +24,6 @@ public class Player extends Fighter
     public void act() 
     {
         super.act();
+        
     }    
 }
