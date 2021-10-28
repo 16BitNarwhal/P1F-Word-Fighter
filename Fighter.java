@@ -10,6 +10,7 @@ public class Fighter extends Mover
 {
     protected int hp, maxHp;
     protected int minAtk, maxAtk;
+    protected boolean isDead;
     protected Animation attackAnim, runAnim, idleAnim, deadAnim;
     
     /*
@@ -25,7 +26,12 @@ public class Fighter extends Mover
     
     public void act() {
         super.act();
-        runAnim.animate();
+        if (isDead) {
+            deadAnim.animate();
+            if (deadAnim.finishedAnim()) {
+                getWorld().removeObject(this);
+            }
+        }
     }
     
     /*
@@ -39,10 +45,9 @@ public class Fighter extends Mover
      * lose a certain amount of heatlh
      */
     public void loseHp(int atk) {
-        this.hp -= atk;
+        this.hp -= atk; 
         if (this.hp <= 0) {
-            // dead
-            getWorld().removeObject(this);
+            isDead = true;
         }
     }
     
