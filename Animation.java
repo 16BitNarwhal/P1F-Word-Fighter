@@ -42,14 +42,22 @@ public class Animation
         actor.setImage(frames[(int)(frame / fr)][dir]);
     }
     
-    /*
+    /**
+     * returns true on last frame
+     */
+    protected boolean finishedAnim() {
+        int fr = 60 / fps;
+        return (frame+1 == fr*numberFrames);
+    }
+    
+    /**
      * set direction index (0: face right, 1: face left)
      */
     public void setDir(int dir) {
         this.dir = dir;
     }
     
-    /*
+    /**
      * set direction based on movement
      */    
     public void setDir(Vector2 move) { 
