@@ -20,7 +20,7 @@ public class TitleScreenPlayer extends Player
         setLocation(pos.getX(), pos.getY());
         runAnim.animate();
         move(new Vector2(3, 0));
-        if(getX() > 950)
+        if(getX() > 975)
         {
             setPos(new Vector2(0,400));
         }

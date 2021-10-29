@@ -19,10 +19,11 @@ public class TItleScreen extends World
         addObject(new TitleScreenPlayer(),0,0);
         prepare();
     }
-     private void prepare()
+    private void prepare()
     {
         Title title = new Title();
-        addObject(title,500,450);
+        addObject(title,475,350);
+        Start startbutton = new Start();
+        addObject(startbutton,525,550);
     }
-
 }
