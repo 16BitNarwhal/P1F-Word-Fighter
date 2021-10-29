@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Letter extends Mover
 {
     public Letter(Vector2 initialPos) {
-        super(initialPos, 5);
+        super(initialPos);
     }
     
     /**

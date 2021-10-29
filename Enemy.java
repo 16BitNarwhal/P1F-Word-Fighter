@@ -14,8 +14,8 @@ public class Enemy extends Fighter
     /**
      * Initialize Enemy
      */
-    public Enemy(float speed, int hp, int minAtk, int maxAtk, float atkCooldown) {
-        super(new Vector2(1000, 250), speed, hp, minAtk, maxAtk);
+    public Enemy(int hp, int minAtk, int maxAtk, float atkCooldown) {
+        super(new Vector2(1000, 250), hp, minAtk, maxAtk);
         this.atkCooldown = (long)(atkCooldown * 60f);
         this.atkTimer = 0;
          
@@ -36,7 +36,7 @@ public class Enemy extends Fighter
             setAnimDir(1);
             
             runAnim.animate();
-            moveTowards(new Vector2(850, 250));
+            moveTowards(new Vector2(850, 250), 2.5f);
             
             if (touchingTarget(new Vector2(850, 250))) {
                 this.state = "idle";
@@ -45,13 +45,13 @@ public class Enemy extends Fighter
         } else if (this.state == "idle") {
             if (!touchingTarget(new Vector2(850, 250))) {
                 runAnim.animate();
-                moveTowards(new Vector2(850, 250));
+                moveTowards(new Vector2(850, 250), 10);
             } else {
                 idleAnim.animate();
             }
             
             this.atkTimer++;
-            if (this.atkTimer >= this.atkCooldown && player.getState() != "attack") {
+            if (this.atkTimer >= this.atkCooldown && player.getState() == "idle") {
                 this.state = "attack";
                 this.atkTimer = 0;
                 idleAnim.resetFrame();
@@ -61,7 +61,7 @@ public class Enemy extends Fighter
         } else if (this.state == "attack") {
             if (!touchingTarget(player.getPos(), 50)) {
                 runAnim.animate();
-                moveTowards(player.getPos());
+                moveTowards(player.getPos(), 15);
             } else {
                 attackAnim.animate();
                 if (attackAnim.finishedAnim()) {

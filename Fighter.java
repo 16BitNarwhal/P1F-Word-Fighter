@@ -17,8 +17,8 @@ public class Fighter extends Mover
     /**
      * initialize fighter
      */
-    public Fighter(Vector2 pos, float speed, int hp, int minAtk, int maxAtk) {
-        super(pos, speed);
+    public Fighter(Vector2 pos, int hp, int minAtk, int maxAtk) {
+        super(pos);
         this.maxHp = hp;
         this.hp = hp;
         this.minAtk = minAtk;

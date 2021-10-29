@@ -10,7 +10,7 @@ public class Player extends Fighter
     private Enemy enemy;
     
     public Player() {
-        super(new Vector2(0,250), 10, 100, 5, 10);
+        super(new Vector2(0,250), 100, 5, 10);
         
         initAnim("knight/Attack", 10,
             "knight/Idle", 10,
@@ -35,7 +35,7 @@ public class Player extends Fighter
             setAnimDir(0);
             
             runAnim.animate();
-            moveTowards(new Vector2(200, 250));
+            moveTowards(new Vector2(200, 250), 2.5f);
             
             if (touchingTarget(new Vector2(200, 250))) {
                 this.state = "idle";
@@ -44,12 +44,12 @@ public class Player extends Fighter
         } else if (this.state == "idle") {
             if (!touchingTarget(new Vector2(200, 250))) {
                 runAnim.animate();
-                moveTowards(new Vector2(200, 250));
+                moveTowards(new Vector2(200, 250), 10);
             } else {
                 idleAnim.animate();
             }
             
-            if (Utils.random()<=0.01) {
+            if (enemy.getState()=="idle" && Utils.random()<=0.01) {
                 this.state = "attack";
                 runAnim.resetFrame();
                 idleAnim.resetFrame();
@@ -60,7 +60,7 @@ public class Player extends Fighter
         } else if (this.state == "attack") {
             if (!touchingTarget(enemy.getPos(), 50)) {
                 runAnim.animate();
-                moveTowards(enemy.getPos());
+                moveTowards(enemy.getPos(), 15);
             } else {
                 attackAnim.animate();
                 if (attackAnim.finishedAnim()) {

@@ -15,6 +15,7 @@ public class GameWorld extends World {
      */
     public GameWorld() {     
         super(1000, 600, 1); 
+        setBackground(new GreenfootImage("gameBackground.png"));
         player = new Player();
         addObject(player, 0, 0);
         

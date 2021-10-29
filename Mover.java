@@ -8,15 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Mover extends Actor
 {
-    protected float moveSpeed;
     protected Vector2 pos;
     
     /*
      * Initialize mover
      */
-    public Mover(Vector2 pos, float speed) {
-        this.pos = pos;
-        this.moveSpeed = speed; 
+    public Mover(Vector2 pos) {
+        this.pos = pos; 
     }
     
     public void act() {
@@ -33,10 +31,10 @@ public class Mover extends Actor
     /**
      * move 1 step towards a target
      */
-    public void moveTowards(Vector2 target) {
+    public void moveTowards(Vector2 target, float speed) {
         if (!touchingTarget(target)) {
             Vector2 dir = Vector2.sub(target, pos).normalize();
-            move(dir.mult(this.moveSpeed));
+            move(dir.mult(speed));
         }
     }
     

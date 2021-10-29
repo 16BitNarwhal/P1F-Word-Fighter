@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TItleScreen extends World
+public class TitleScreen extends World
 {
     
     /**
      * Constructor for objects of class TItleScreen.
      * 
      */
-    public TItleScreen()
+    public TitleScreen()
     {     
         super(1000, 600, 1);
         addObject(new TitleScreenPlayer(),0,0);
