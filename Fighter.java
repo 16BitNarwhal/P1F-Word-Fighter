@@ -27,13 +27,13 @@ public class Fighter extends Mover
     }
     
     public void act() {
-        super.act();
+        super.act();   
         if (isDead) {
             deadAnim.animate();
             if (deadAnim.finishedAnim()) {
                 getWorld().removeObject(this);
             }
-        }
+        } 
     }
     
     /**
