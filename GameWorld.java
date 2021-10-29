@@ -13,6 +13,6 @@ public class GameWorld extends World
      */
     public GameWorld() {     
         super(1000, 600, 1); 
-        
+        setBackground(new GreenfootImage("gameBackground.png"));
     }
 }

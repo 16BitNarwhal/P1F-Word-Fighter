@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Start extends GUI
 {
     public Start() {
+        setImage(new GreenfootImage("startButton.png"));
         GreenfootImage image = getImage();
         image.scale(120,120);
         setImage(image); 
