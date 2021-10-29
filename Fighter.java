@@ -8,12 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Fighter extends Mover
 {
+    protected String state;
     protected int hp, maxHp;
     protected int minAtk, maxAtk;
     protected boolean isDead;
     protected Animation attackAnim, runAnim, idleAnim, deadAnim;
     
-    /*
+    /**
      * initialize fighter
      */
     public Fighter(Vector2 pos, float speed, int hp, int minAtk, int maxAtk) {
@@ -22,6 +23,7 @@ public class Fighter extends Mover
         this.hp = hp;
         this.minAtk = minAtk;
         this.maxAtk = maxAtk; 
+        this.state = "enter";
     }
     
     public void act() {
@@ -34,14 +36,14 @@ public class Fighter extends Mover
         }
     }
     
-    /*
+    /**
      * deal (randomized) damage to an opponent
      */
     public void attack(Fighter opponent) {
         opponent.loseHp(Utils.random(this.minAtk, this.maxAtk));
     }
     
-    /*
+    /**
      * lose a certain amount of heatlh
      */
     public void loseHp(int atk) {
@@ -51,7 +53,7 @@ public class Fighter extends Mover
         }
     }
     
-    /*
+    /**
      * initialize anims
      * attack, run, idle
      */
@@ -65,5 +67,17 @@ public class Fighter extends Mover
         idleAnim = new Animation(this, idleFilePath, idleFrames, fps, scale);
         deadAnim = new Animation(this, deadFilePath, deadFrames, fps, scale);
     }
+    
+    protected void setAnimDir(int dir) {
+        runAnim.setDir(dir);
+        idleAnim.setDir(dir);
+        attackAnim.setDir(dir);
+        deadAnim.setDir(dir);
+    }
+    
+    /**
+     * Getters and setters
+     */
+    public String getState() { return this.state; }
     
 }
