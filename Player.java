@@ -23,7 +23,10 @@ public class Player extends Fighter
      */
     public void act() 
     {
-        super.act();
-        
+        super.act(); 
+        if (isDead) {
+            return;
+        }
+        idleAnim.animate(); 
     }    
 }
