@@ -7,8 +7,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Fighter
 {
+    private Enemy enemy;
+    
     public Player() {
-        super(new Vector2(100,100), 10, 100, 5, 10);
+        super(new Vector2(0,250), 10, 100, 5, 10);
         
         initAnim("knight/Attack", 10,
             "knight/Idle", 10,
@@ -23,10 +25,50 @@ public class Player extends Fighter
      */
     public void act() 
     {
-        super.act(); 
-        if (isDead) {
+        super.act();
+        if (this.isDead) {
             return;
         }
-        idleAnim.animate(); 
+        if (this.state == "enter") {
+            GameWorld world = (GameWorld) getWorld();
+            enemy = world.getEnemy();
+            setAnimDir(0);
+            
+            runAnim.animate();
+            moveTowards(new Vector2(200, 250));
+            
+            if (touchingTarget(new Vector2(200, 250))) {
+                this.state = "idle";
+                runAnim.resetFrame();
+            }
+        } else if (this.state == "idle") {
+            if (!touchingTarget(new Vector2(200, 250))) {
+                runAnim.animate();
+                moveTowards(new Vector2(200, 250));
+            } else {
+                idleAnim.animate();
+            }
+            
+            if (Utils.random()<=0.01) {
+                this.state = "attack";
+                runAnim.resetFrame();
+                idleAnim.resetFrame();
+            }
+            // activate letters / words
+            // deactivate letters while enemy or player is attacking
+            // if make word, animate attack 
+        } else if (this.state == "attack") {
+            if (!touchingTarget(enemy.getPos(), 50)) {
+                runAnim.animate();
+                moveTowards(enemy.getPos());
+            } else {
+                attackAnim.animate();
+                if (attackAnim.finishedAnim()) {
+                    this.state = "idle"; 
+                    attackAnim.resetFrame();
+                    runAnim.resetFrame();
+                }
+            }
+        }
     }    
 }
