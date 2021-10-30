@@ -21,6 +21,9 @@ public class GameWorld extends World {
         
         enemy = new Zombie();
         addObject(enemy, 0, 0);
+        
+        LetterBox letterbox = new LetterBox();
+        addObject(letterbox, 210, 480);
     }
     
     public void act() {

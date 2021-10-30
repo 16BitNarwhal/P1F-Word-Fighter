@@ -5,9 +5,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * For making words
  * 
  */
-public class Letter extends Mover
+public class Letters extends Mover
 {
-    public Letter(Vector2 initialPos) {
+    private int state;
+    public Letters(Vector2 initialPos) {
         super(initialPos);
     }
     
@@ -17,6 +18,9 @@ public class Letter extends Mover
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+        if(true)
+        {
+            
+        }
+    }
 }
