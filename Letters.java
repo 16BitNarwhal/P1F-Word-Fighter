@@ -9,8 +9,8 @@ public class Letters extends Mover
 {
     private boolean state = true;
     private boolean moved = false;
-    private Vector2 original = new Vector2(180, 320);
-    public static Vector2 onTheLine = new Vector2(619, 454);
+    private Vector2 original = new Vector2(70, 405);
+    public static Vector2 onTheLine = new Vector2(525, 454);
     private GreenfootImage buttonA = new GreenfootImage("aButton.png");
     public Letters(Vector2 initialPos) {
         super(onTheLine);
@@ -27,16 +27,18 @@ public class Letters extends Mover
         if(Greenfoot.mousePressed(this))
         {
             state = !state;
-            System.out.println("Clicked!" + state);
         }
         if(state)
         {
+            //point set, needs to move
             this.setPos(original);
+            super.act();
         }
         else
         {
+            //point set, needs to move
             this.setPos(onTheLine);
-            System.out.println("pos changed");
+            super.act();
         }
     }
 }
