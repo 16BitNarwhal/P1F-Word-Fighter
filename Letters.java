@@ -7,9 +7,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Letters extends Mover
 {
-    private int state;
+    private boolean state = true;
+    private boolean moved = false;
+    private Vector2 original = new Vector2(180, 320);
+    public static Vector2 onTheLine = new Vector2(619, 454);
+    private GreenfootImage buttonA = new GreenfootImage("aButton.png");
     public Letters(Vector2 initialPos) {
-        super(initialPos);
+        super(onTheLine);
+        buttonA.scale(100, 80);
+        this.setImage(buttonA);
     }
     
     /**
@@ -18,9 +24,19 @@ public class Letters extends Mover
      */
     public void act() 
     {
-        if(true)
+        if(Greenfoot.mousePressed(this))
         {
-            
+            state = !state;
+            System.out.println("Clicked!" + state);
+        }
+        if(state)
+        {
+            this.setPos(original);
+        }
+        else
+        {
+            this.setPos(onTheLine);
+            System.out.println("pos changed");
         }
     }
 }

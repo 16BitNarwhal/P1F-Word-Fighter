@@ -8,7 +8,7 @@ public class GameWorld extends World {
     
     private Player player;
     private Enemy enemy;
-    
+    GreenfootSound battle = new GreenfootSound("FightTheme.mp3");
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -24,10 +24,18 @@ public class GameWorld extends World {
         
         LetterBox letterbox = new LetterBox();
         addObject(letterbox, 210, 480);
+        
+        FinishedWordBox finishedwordbox = new FinishedWordBox();
+        addObject(finishedwordbox, 722, 454);
+        
+        Vector2 og = new Vector2(180, 320);
+        Letters a_button = new Letters(og);
+        addObject(a_button, 60, 400);
     }
     
     public void act() {
         // enemy is null, new enemy, update score
+        battle.playLoop();
     }
     
     /**
