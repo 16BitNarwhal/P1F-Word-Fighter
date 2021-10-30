@@ -30,13 +30,11 @@ public class Letters extends Mover
         }
         if(state)
         {
-            //point set, needs to move
             this.setPos(original);
             super.act();
         }
         else
         {
-            //point set, needs to move
             this.setPos(onTheLine);
             super.act();
         }
