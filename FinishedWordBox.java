@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class FinishedWordBox extends GUI
 {
+    private static ArrayList<Character> words;
     /**
      * Act - do whatever the FinishedWordBox wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,7 +22,11 @@ public class FinishedWordBox extends GUI
         this.setImage("finishedWordBox.png");
         GreenfootImage image = getImage();
         image.scale(488, 94);
-        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<Character> words = new ArrayList<Character>();
         
+    }
+    public static ArrayList<Character> getArrayList()
+    {
+        return words;
     }
 }
