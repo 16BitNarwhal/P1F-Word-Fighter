@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class FinishedWordBox here.
  * 
@@ -21,5 +21,7 @@ public class FinishedWordBox extends GUI
         this.setImage("finishedWordBox.png");
         GreenfootImage image = getImage();
         image.scale(488, 94);
+        ArrayList<String> words = new ArrayList<String>();
+        
     }
 }

@@ -32,7 +32,8 @@ public class GameWorld extends World {
         Letters a_button = new Letters(og);
         addObject(a_button, 60, 400);
         
-        
+        CheckWordButton oK = new CheckWordButton();
+        addObject(oK, 900, 544);
     }
     
     public void act() {

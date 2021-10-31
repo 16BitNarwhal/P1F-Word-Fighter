@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo);
+import java.util.ArrayList;
 /**
  * Letter class
  * For making words
@@ -18,8 +19,8 @@ public class Letters extends Mover
         super(onTheLine);
         int letter = Utils.random(25);
         GreenfootImage theButton = new GreenfootImage("tileset/png/tiles/" + alphabet[letter + 1] + "_button.png");
+        theButton.scale(100, 100);
         this.setImage(theButton);
-        theButton.scale(100, 80);
     }
     
     /**
