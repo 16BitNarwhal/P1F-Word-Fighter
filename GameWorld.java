@@ -31,6 +31,8 @@ public class GameWorld extends World {
         Vector2 og = new Vector2(180, 320);
         Letters a_button = new Letters(og);
         addObject(a_button, 60, 400);
+        
+        
     }
     
     public void act() {
