@@ -8,25 +8,36 @@ import java.util.ArrayList;
  */
 public class FinishedWordBox extends GUI
 {
-    private static ArrayList<Character> words;
-    /**
-     * Act - do whatever the FinishedWordBox wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
-    public FinishedWordBox()
-    {
+    private static ArrayList<Letter> word;
+    private static int maxLetters = 5;
+    
+    public FinishedWordBox() {
         this.setImage("finishedWordBox.png");
         GreenfootImage image = getImage();
         image.scale(488, 94);
-        ArrayList<Character> words = new ArrayList<Character>();
-        
+        ArrayList<Character> words = new ArrayList<Character>(); 
     }
-    public static ArrayList<Character> getArrayList()
-    {
-        return words;
+    
+    public static int getIndex(Letter letter) {
+        for (int i=0;i<word.size();i++) {
+            if (letter == word.get(i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static void addLetter(Letter letter) {
+        if (word.size() < maxLetters) {
+            word.add(letter);
+        }
+    }
+    
+    public static void clearLetters() {
+        word.clear();
+    }
+    
+    public static ArrayList<Letter> getWords() {
+        return word;
     }
 }

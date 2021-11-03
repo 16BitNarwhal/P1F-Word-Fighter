@@ -26,11 +26,7 @@ public class GameWorld extends World {
         addObject(letterbox, 210, 480);
         
         FinishedWordBox finishedwordbox = new FinishedWordBox();
-        addObject(finishedwordbox, 722, 454);
-        
-        Vector2 og = new Vector2(180, 320);
-        Letters a_button = new Letters(og);
-        addObject(a_button, 60, 400);
+        addObject(finishedwordbox, 722, 454); 
         
         CheckWordButton oK = new CheckWordButton();
         addObject(oK, 900, 544);
