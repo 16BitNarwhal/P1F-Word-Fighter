@@ -8,17 +8,33 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LetterBox extends GUI
 {
-    /**
-     * Act - do whatever the LetterBox wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        
-    }    
-    public LetterBox(){
+    Letter[][] letters = new Letter[2][4];
+    public LetterBox() {
         this.setImage("letter square.png");
         GreenfootImage image = getImage();
         image.scale(400, 240);
+         
     }
+    
+    public void InitLetters() {
+        Vector2 origin = new Vector2(180, 320);
+        for (int i=0;i<2;i++) {
+            for (int j=0;j<4;j++) {
+                Vector2 initPos = new Vector2(origin.getX() + (i*100), origin.getY() + (j*100));
+                Letter letter = new Letter(initPos);
+                getWorld().addObject(letter, 0, 0);
+                letters[i][j] = letter;
+            }
+        }
+    }
+    
+    boolean firstAct = true;
+    public void act() {
+        if (firstAct) {
+            InitLetters();
+            firstAct = false;
+        }
+        
+    }    
+
 }

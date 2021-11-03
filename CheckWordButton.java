@@ -15,7 +15,10 @@ public class CheckWordButton extends GUI
      */
     public void act() 
     {
-        // Add your action code here.
+        if(Greenfoot.mouseClicked(this))
+        {
+            
+        }
     }    
     public CheckWordButton()
     {
