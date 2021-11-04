@@ -9,19 +9,21 @@ import java.util.ArrayList;
 public class CheckWordButton extends GUI
 {
     private GreenfootImage theButton = new GreenfootImage("gui/tile078.png");
-    /**
-     * Act - do whatever the CheckWordButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
     public void act() 
     {
-        if(Greenfoot.mouseClicked(this))
-        {
-            
+        if(Greenfoot.mouseClicked(this)) {
+            if (FinishedWordBox.checkWord()) {
+                int size = FinishedWordBox.getWord().size();
+                FinishedWordBox.clearLetters();
+                // player attack enemy
+            } else {
+                // 
+            }
         }
     }    
-    public CheckWordButton()
-    {
+    
+    public CheckWordButton() {
         theButton.scale(100, 100);
         this.setImage(theButton);
     }

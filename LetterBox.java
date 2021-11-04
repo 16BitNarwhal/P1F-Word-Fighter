@@ -36,5 +36,33 @@ public class LetterBox extends GUI
         }
         
     }    
+    
+    public boolean checkLetters() {
+        char[] arr = new char[8];
+        for (int i=0;i<2;i++) {
+            for (int j=0;j<4;j++) {
+                arr[i*4 + j] = letters[i][j].getLetter();
+            }
+        }
+        String s="";
+        for (int i=0;i<8;i++) {
+            s += arr[i];
+            for (int j=0;j<8;j++) {
+                if (i==j) continue;
+                s += arr[j];
+                for (int k=0;k<8;k++) {
+                    if (i==k || j==k) continue;
+                    s += arr[k];
+                    if (WordFetcher.checkWord(s)) {
+                        return true;
+                    }
+                    s = s.substring(0, s.length()-1);
+                }
+                s = s.substring(0, s.length()-1);
+            }
+            s = s.substring(0, s.length()-1);
+        }
+        return false;
+    }
 
 }

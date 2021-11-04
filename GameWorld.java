@@ -30,6 +30,8 @@ public class GameWorld extends World {
         
         CheckWordButton oK = new CheckWordButton();
         addObject(oK, 900, 544);
+        
+        WordFetcher.fetchWords();
     }
     
     public void act() {

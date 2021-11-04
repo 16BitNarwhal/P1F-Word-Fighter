@@ -41,8 +41,19 @@ public class FinishedWordBox extends GUI
         }
     }
     
+    public static boolean checkWord() {
+        String str = "";
+        for (Letter l : word) {
+            str += l.getLetter();
+        }
+        return WordFetcher.checkWord(str);
+    }
+    
     public static void clearLetters() {
-        word.clear();
+        for (int i=0;i<word.size();i++) {
+            word.get(i).newLetter();
+        }
+        word.clear();         
     }
     
     public static boolean isFull() {
@@ -51,5 +62,5 @@ public class FinishedWordBox extends GUI
     
     public static ArrayList<Letter> getWord() {
         return word;
-    }
+    } 
 }

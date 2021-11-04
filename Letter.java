@@ -20,11 +20,7 @@ public class Letter extends Mover
         super(initialPos);
         this.initPos = initialPos;
         
-        int idx = Utils.random(25);
-        letter = alphabet[idx];
-        GreenfootImage theButton = new GreenfootImage("tileset/png/tiles/" + alphabet[idx] + "_button.png");
-        theButton.scale(100, 100);
-        this.setImage(theButton);
+        newLetter();
     }
     
     /**
@@ -34,9 +30,8 @@ public class Letter extends Mover
     public void act() 
     {
         super.act();
-        if(Greenfoot.mousePressed(this))
-        {
-            picked = !picked; 
+        if(Greenfoot.mousePressed(this)) {
+            picked = !picked;
             if (FinishedWordBox.isFull()) {
                 picked = false;
             }
@@ -62,5 +57,15 @@ public class Letter extends Mover
     
     public char getLetter() {
         return this.letter;
+    }
+    
+    public void newLetter() {
+        this.picked = false;
+        
+        int idx = Utils.random(25);
+        letter = alphabet[idx];
+        GreenfootImage theButton = new GreenfootImage("tileset/png/tiles/" + alphabet[idx] + "_button.png");
+        theButton.scale(100, 100);
+        this.setImage(theButton);
     }
 }
