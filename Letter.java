@@ -1,4 +1,3 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo);
 import java.util.ArrayList;
 /**
@@ -12,14 +11,15 @@ public class Letter extends Mover
                                 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 
                                 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 
                                 'y', 'z'};
-    private boolean picked = true;
+    private boolean picked = false;
     private boolean moved = false;
-    private Vector2 original = new Vector2(70, 405);
-    public static Vector2 onTheLine = new Vector2(525, 454);
+    private Vector2 initPos; 
     private char letter;
     
     public Letter(Vector2 initialPos) {
-        super(onTheLine);
+        super(initialPos);
+        this.initPos = initialPos;
+        
         int idx = Utils.random(25);
         letter = alphabet[idx];
         GreenfootImage theButton = new GreenfootImage("tileset/png/tiles/" + alphabet[idx] + "_button.png");
@@ -36,15 +36,28 @@ public class Letter extends Mover
         super.act();
         if(Greenfoot.mousePressed(this))
         {
-            picked = !picked;
+            picked = !picked; 
+            if (FinishedWordBox.isFull()) {
+                picked = false;
+            }
+            
+            if (picked) {
+                FinishedWordBox.addLetter(this);
+            } else {
+                FinishedWordBox.removeLetter(this);
+            }
+            
         }
         if(!picked) {
-            this.setPos(original); 
-        } else {
-            this.setPos(onTheLine);
-            int idx = FinishedWordBox.getIndex(this);
-            // set position based on index
+            this.setPos(this.initPos);
         }
+    }
+    
+    public void updatePos() {
+        int idx = FinishedWordBox.getIndex(this);
+        Vector2 newPos = new Vector2(525, 454);
+        newPos.setX(newPos.getX() + idx * 100);
+        this.setPos(newPos);
     }
     
     public char getLetter() {

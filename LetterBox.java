@@ -13,14 +13,14 @@ public class LetterBox extends GUI
         this.setImage("letter square.png");
         GreenfootImage image = getImage();
         image.scale(400, 240);
-         
+        
     }
     
     public void InitLetters() {
-        Vector2 origin = new Vector2(180, 320);
+        Vector2 origin = new Vector2(60, 420);
         for (int i=0;i<2;i++) {
             for (int j=0;j<4;j++) {
-                Vector2 initPos = new Vector2(origin.getX() + (i*100), origin.getY() + (j*100));
+                Vector2 initPos = new Vector2(origin.getX() + (j*100), origin.getY() + (i*100));
                 Letter letter = new Letter(initPos);
                 getWorld().addObject(letter, 0, 0);
                 letters[i][j] = letter;
