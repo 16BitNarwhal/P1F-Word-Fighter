@@ -27,7 +27,7 @@ public class Enemy extends Fighter
      */
     public void act() {
         super.act();
-        if (this.isDead) {
+        if (this.isDead()) {
             return;
         }
         if (this.state == "enter") { 
@@ -51,7 +51,7 @@ public class Enemy extends Fighter
             }
             
             this.atkTimer++;
-            if (this.atkTimer >= this.atkCooldown && player.getState() == "idle") {
+            if (this.atkTimer >= this.atkCooldown && !player.isDead() && player.getState() == "idle") {
                 this.state = "attack";
                 this.atkTimer = 0;
                 idleAnim.resetFrame();

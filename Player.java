@@ -23,10 +23,9 @@ public class Player extends Fighter
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act() {
         super.act();
-        if (this.isDead) {
+        if (this.isDead()) {
             return;
         }
         if (this.state == "enter") {
@@ -48,12 +47,7 @@ public class Player extends Fighter
             } else {
                 idleAnim.animate();
             }
-            
-            if (enemy.getState()=="idle" && Utils.random()<=0.01) {
-                this.state = "attack";
-                runAnim.resetFrame();
-                idleAnim.resetFrame();
-            }
+             
             // activate letters / words
             // deactivate letters while enemy or player is attacking
             // if make word, animate attack 
@@ -64,11 +58,20 @@ public class Player extends Fighter
             } else {
                 attackAnim.animate();
                 if (attackAnim.finishedAnim()) {
+                    // enemy.losehealth
+                    GameWorld world = (GameWorld) getWorld();
+                    super.attack(world.getEnemy());
                     this.state = "idle"; 
                     attackAnim.resetFrame();
                     runAnim.resetFrame();
                 }
             }
         }
-    }    
+    }
+    
+    public void attack() { 
+        this.state = "attack";
+        runAnim.resetFrame();
+        idleAnim.resetFrame();
+    }
 }

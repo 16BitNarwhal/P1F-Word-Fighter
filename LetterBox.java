@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LetterBox extends GUI
 {
-    Letter[][] letters = new Letter[2][4];
+    private Letter[][] letters = new Letter[2][4];
     public LetterBox() {
         this.setImage("letter square.png");
         GreenfootImage image = getImage();
@@ -34,8 +34,7 @@ public class LetterBox extends GUI
             InitLetters();
             firstAct = false;
         }
-        
-    }    
+    }
     
     public boolean checkLetters() {
         char[] arr = new char[8];

@@ -7,10 +7,11 @@ import java.util.ArrayList;
  */
 public class Letter extends Mover
 {
-    private char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 
-                                'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 
-                                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 
+    private char[] consonants = {'b', 'c', 'd', 'f', 'g', 'h', 
+                                'j', 'k', 'l', 'm', 'n', 'p', 
+                                'q', 'r', 's', 't', 'v', 'w', 'x', 
                                 'y', 'z'};
+    private char[] vowels = {'a','e','i','o','u'};
     private boolean picked = false;
     private boolean moved = false;
     private Vector2 initPos; 
@@ -62,9 +63,17 @@ public class Letter extends Mover
     public void newLetter() {
         this.picked = false;
         
-        int idx = Utils.random(25);
-        letter = alphabet[idx];
-        GreenfootImage theButton = new GreenfootImage("tileset/png/tiles/" + alphabet[idx] + "_button.png");
+        GreenfootImage theButton;
+        if (Utils.random() <= 0.3) { // 30% chance of creating vowel
+            int idx = Utils.random(vowels.length-1);
+            letter = vowels[idx];
+            theButton = new GreenfootImage("tileset/png/tiles/" + vowels[idx] + "_button.png");
+        } else {
+            int idx = Utils.random(consonants.length-1);
+            letter = consonants[idx];
+            theButton = new GreenfootImage("tileset/png/tiles/" + consonants[idx] + "_button.png");
+        }
+        
         theButton.scale(100, 100);
         this.setImage(theButton);
     }

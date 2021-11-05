@@ -16,9 +16,14 @@ public class CheckWordButton extends GUI
             if (FinishedWordBox.checkWord()) {
                 int size = FinishedWordBox.getWord().size();
                 FinishedWordBox.clearLetters();
-                // player attack enemy
+                
+                if (size > 1) {
+                    GameWorld world = (GameWorld) getWorld();
+                    if (world.getEnemy().isDead()) return;
+                    world.getPlayer().attack();
+                }
             } else {
-                // 
+                // red X
             }
         }
     }    
