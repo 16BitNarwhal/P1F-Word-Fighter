@@ -19,6 +19,7 @@ public class TitleScreen extends World
         addObject(new TitleScreenPlayer(),0,0);
         prepare();
         setBackground(new GreenfootImage("titleScreen.png"));
+        
     }
     private void prepare()
     {

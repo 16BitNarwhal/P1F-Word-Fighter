@@ -15,7 +15,7 @@ public class FinishedWordBox extends GUI
         this.setImage("finishedWordBox.png");
         GreenfootImage image = getImage();
         image.scale(488, 94);
-        ArrayList<Character> words = new ArrayList<Character>(); 
+        word = new ArrayList<Letter>(); 
     }
     
     public static int getIndex(Letter letter) {
@@ -27,17 +27,40 @@ public class FinishedWordBox extends GUI
         return -1;
     }
     
-    public static void addLetter(Letter letter) {
-        if (word.size() < maxLetters) {
-            word.add(letter);
+    public static void removeLetter(Letter letter) {
+        word.remove(letter);
+        for (int i=0;i<word.size();i++) {
+            word.get(i).updatePos();
         }
     }
     
-    public static void clearLetters() {
-        word.clear();
+    public static void addLetter(Letter letter) {
+        if (!isFull()) {
+            word.add(letter);
+            letter.updatePos();
+        }
     }
     
-    public static ArrayList<Letter> getWords() {
-        return word;
+    public static boolean checkWord() {
+        String str = "";
+        for (Letter l : word) {
+            str += l.getLetter();
+        }
+        return WordFetcher.checkWord(str);
     }
+    
+    public static void clearLetters() {
+        for (int i=0;i<word.size();i++) {
+            word.get(i).newLetter();
+        }
+        word.clear();         
+    }
+    
+    public static boolean isFull() {
+        return word.size()==maxLetters;
+    }
+    
+    public static ArrayList<Letter> getWord() {
+        return word;
+    } 
 }

@@ -10,8 +10,7 @@ public class Fighter extends Mover
 {
     protected String state;
     protected int hp, maxHp;
-    protected int minAtk, maxAtk;
-    protected boolean isDead;
+    protected int minAtk, maxAtk; 
     protected Animation attackAnim, runAnim, idleAnim, deadAnim;
     
     /**
@@ -28,7 +27,7 @@ public class Fighter extends Mover
     
     public void act() {
         super.act();   
-        if (isDead) {
+        if (isDead()) {
             deadAnim.animate();
             if (deadAnim.finishedAnim()) {
                 getWorld().removeObject(this);
@@ -48,9 +47,6 @@ public class Fighter extends Mover
      */
     public void loseHp(int atk) {
         this.hp -= atk; 
-        if (this.hp <= 0) {
-            isDead = true;
-        }
     }
     
     /**
@@ -79,5 +75,6 @@ public class Fighter extends Mover
      * Getters and setters
      */
     public String getState() { return this.state; }
+    public boolean isDead() { return this.hp <= 0; }
     
 }

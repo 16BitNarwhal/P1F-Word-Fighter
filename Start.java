@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Start extends GUI
 {
+    GreenfootSound main = new GreenfootSound("mainMenu.mp3");
     public Start() {
         setImage(new GreenfootImage("startButton.png"));
         GreenfootImage image = getImage();
@@ -20,7 +21,9 @@ public class Start extends GUI
      */
     public void act() 
     {
+        main.playLoop();
         if(Greenfoot.mouseClicked(this)){
+            main.stop();
             Greenfoot.setWorld(new GameWorld());
         }
         

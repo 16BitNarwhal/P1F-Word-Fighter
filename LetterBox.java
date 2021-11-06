@@ -8,19 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LetterBox extends GUI
 {
-    Letter[][] letters = new Letter[2][4];
+    private Letter[][] letters = new Letter[2][4];
     public LetterBox() {
         this.setImage("letter square.png");
         GreenfootImage image = getImage();
         image.scale(400, 240);
-         
+        
     }
     
     public void InitLetters() {
-        Vector2 origin = new Vector2(180, 320);
+        Vector2 origin = new Vector2(60, 420);
         for (int i=0;i<2;i++) {
             for (int j=0;j<4;j++) {
-                Vector2 initPos = new Vector2(origin.getX() + (i*100), origin.getY() + (j*100));
+                Vector2 initPos = new Vector2(origin.getX() + (j*100), origin.getY() + (i*100));
                 Letter letter = new Letter(initPos);
                 getWorld().addObject(letter, 0, 0);
                 letters[i][j] = letter;
@@ -34,7 +34,34 @@ public class LetterBox extends GUI
             InitLetters();
             firstAct = false;
         }
-        
-    }    
+    }
+    
+    public boolean checkLetters() {
+        char[] arr = new char[8];
+        for (int i=0;i<2;i++) {
+            for (int j=0;j<4;j++) {
+                arr[i*4 + j] = letters[i][j].getLetter();
+            }
+        }
+        String s="";
+        for (int i=0;i<8;i++) {
+            s += arr[i];
+            for (int j=0;j<8;j++) {
+                if (i==j) continue;
+                s += arr[j];
+                for (int k=0;k<8;k++) {
+                    if (i==k || j==k) continue;
+                    s += arr[k];
+                    if (WordFetcher.checkWord(s)) {
+                        return true;
+                    }
+                    s = s.substring(0, s.length()-1);
+                }
+                s = s.substring(0, s.length()-1);
+            }
+            s = s.substring(0, s.length()-1);
+        }
+        return false;
+    }
 
 }

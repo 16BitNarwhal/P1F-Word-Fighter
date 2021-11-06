@@ -1,4 +1,3 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo);
 import java.util.ArrayList;
 /**
@@ -8,23 +7,21 @@ import java.util.ArrayList;
  */
 public class Letter extends Mover
 {
-    private char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 
-                                'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 
-                                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 
+    private char[] consonants = {'b', 'c', 'd', 'f', 'g', 'h', 
+                                'j', 'k', 'l', 'm', 'n', 'p', 
+                                'q', 'r', 's', 't', 'v', 'w', 'x', 
                                 'y', 'z'};
-    private boolean picked = true;
+    private char[] vowels = {'a','e','i','o','u'};
+    private boolean picked = false;
     private boolean moved = false;
-    private Vector2 original = new Vector2(70, 405);
-    public static Vector2 onTheLine = new Vector2(525, 454);
+    private Vector2 initPos; 
     private char letter;
     
     public Letter(Vector2 initialPos) {
-        super(onTheLine);
-        int idx = Utils.random(25);
-        letter = alphabet[idx];
-        GreenfootImage theButton = new GreenfootImage("tileset/png/tiles/" + alphabet[idx] + "_button.png");
-        theButton.scale(100, 100);
-        this.setImage(theButton);
+        super(initialPos);
+        this.initPos = initialPos;
+        
+        newLetter();
     }
     
     /**
@@ -34,20 +31,50 @@ public class Letter extends Mover
     public void act() 
     {
         super.act();
-        if(Greenfoot.mousePressed(this))
-        {
+        if(Greenfoot.mousePressed(this)) {
             picked = !picked;
+            if (FinishedWordBox.isFull()) {
+                picked = false;
+            }
+            
+            if (picked) {
+                FinishedWordBox.addLetter(this);
+            } else {
+                FinishedWordBox.removeLetter(this);
+            }
+            
         }
         if(!picked) {
-            this.setPos(original); 
-        } else {
-            this.setPos(onTheLine);
-            int idx = FinishedWordBox.getIndex(this);
-            // set position based on index
+            this.setPos(this.initPos);
         }
+    }
+    
+    public void updatePos() {
+        int idx = FinishedWordBox.getIndex(this);
+        Vector2 newPos = new Vector2(525, 454);
+        newPos.setX(newPos.getX() + idx * 100);
+        this.setPos(newPos);
     }
     
     public char getLetter() {
         return this.letter;
+    }
+    
+    public void newLetter() {
+        this.picked = false;
+        
+        GreenfootImage theButton;
+        if (Utils.random() <= 0.3) { // 30% chance of creating vowel
+            int idx = Utils.random(vowels.length-1);
+            letter = vowels[idx];
+            theButton = new GreenfootImage("tileset/png/tiles/" + vowels[idx] + "_button.png");
+        } else {
+            int idx = Utils.random(consonants.length-1);
+            letter = consonants[idx];
+            theButton = new GreenfootImage("tileset/png/tiles/" + consonants[idx] + "_button.png");
+        }
+        
+        theButton.scale(100, 100);
+        this.setImage(theButton);
     }
 }
