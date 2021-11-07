@@ -11,7 +11,7 @@ public class Fighter extends Mover
     protected String state;
     protected int hp, maxHp;
     protected int minAtk, maxAtk; 
-    protected Animation attackAnim, runAnim, idleAnim, deadAnim;
+    protected Animation attackAnim, runAnim, idleAnim, deadAnim; 
     
     /**
      * initialize fighter
@@ -22,7 +22,7 @@ public class Fighter extends Mover
         this.hp = hp;
         this.minAtk = minAtk;
         this.maxAtk = maxAtk; 
-        this.state = "enter";
+        this.state = "enter"; 
     }
     
     public void act() {
@@ -33,7 +33,7 @@ public class Fighter extends Mover
                 getWorld().removeObject(this);
             }
         } 
-    }
+    } 
     
     /**
      * deal (randomized) damage to an opponent
@@ -75,6 +75,7 @@ public class Fighter extends Mover
      * Getters and setters
      */
     public String getState() { return this.state; }
-    public boolean isDead() { return this.hp <= 0; }
+    public boolean isDead() { return this.hp <= 0; } 
+    public float getHpLoss() { return 1.0f - ((float)this.hp / (float)this.maxHp); }
     
 }

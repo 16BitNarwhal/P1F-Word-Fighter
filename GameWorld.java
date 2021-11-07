@@ -9,6 +9,7 @@ public class GameWorld extends World {
     private int score=0;
     private Player player;
     private Enemy enemy;
+    private Healthbar playerHealthbar, enemyHealthbar;
     private LetterBox letterbox;
     GreenfootSound battle = new GreenfootSound("FightTheme.mp3");
     /**
@@ -20,9 +21,13 @@ public class GameWorld extends World {
         setBackground(new GreenfootImage("gameBackground.png"));
         player = new Player();
         addObject(player, 0, 0);
+        playerHealthbar = new Healthbar(player, "left");
+        addObject(playerHealthbar, 220, 80);
         
         enemy = new Zombie();
         addObject(enemy, 0, 0);
+        enemyHealthbar = new Healthbar(enemy, "right");
+        addObject(enemyHealthbar, 780, 80);
         
         LetterBox letterbox = new LetterBox();
         addObject(letterbox, 210, 480);
@@ -30,10 +35,14 @@ public class GameWorld extends World {
         FinishedWordBox finishedwordbox = new FinishedWordBox();
         addObject(finishedwordbox, 722, 454); 
         
-        CheckWordButton oK = new CheckWordButton();
-        addObject(oK, 900, 544);
+        CheckWordButton checkButton = new CheckWordButton();
+        addObject(checkButton, 900, 544);
         
         WordFetcher.fetchWords();
+        
+        for (Image img : Image.getAllImages()) {
+            addObject(img, 0, 0);
+        }
     }
     
     private long beatTimer=0; // time to beat enemy
@@ -45,11 +54,11 @@ public class GameWorld extends World {
             enemyTimer++;
             if (enemyTimer > 60 * 3) {
                 // random subclass (not zombie)
-                enemy = new Zombie();
+                enemy = new Zombie(); 
+                enemyHealthbar.setFighter(enemy);
                 addObject(enemy, 0, 0);
                 enemyTimer=0;
                 beatTimer=0;
-                
             }
         } 
         
