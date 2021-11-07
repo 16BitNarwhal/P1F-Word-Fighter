@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Fighter
 {
-    private Enemy enemy;
+    private Enemy enemy; 
     
     public Player() {
         super(new Vector2(0,250), 100, 5, 10);
