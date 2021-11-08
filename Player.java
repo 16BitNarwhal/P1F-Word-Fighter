@@ -43,7 +43,7 @@ public class Player extends Fighter
         } else if (this.state == "idle") {
             if (!touchingTarget(new Vector2(200, 250))) {
                 runAnim.animate();
-                moveTowards(new Vector2(200, 250), 10);
+                moveTowards(new Vector2(200, 250), 15);
             } else {
                 idleAnim.animate();
             }

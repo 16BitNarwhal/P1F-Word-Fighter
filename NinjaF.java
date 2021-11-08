@@ -6,15 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Zombie extends Enemy
-{
-    public Zombie() {
-        super(20, 3, 7, 10);
+public class NinjaF extends Enemy {
+    public NinjaF() {
+        super(10, 7, 9, 5);
         
-        initAnim("zombie/male/Attack", 8,
-            "zombie/male/Idle", 15,
-            "zombie/male/Walk", 10,
-            "zombie/male/Dead", 12,
+        initAnim("ninja/female/Attack", 10,
+            "ninja/female/Idle", 10,
+            "ninja/female/Run", 10,
+            "ninja/female/Dead", 10,
             10, 0.4f);
     } 
     

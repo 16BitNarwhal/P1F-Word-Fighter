@@ -45,7 +45,7 @@ public class Enemy extends Fighter
         } else if (this.state == "idle") {
             if (!touchingTarget(new Vector2(850, 250))) {
                 runAnim.animate();
-                moveTowards(new Vector2(850, 250), 10);
+                moveTowards(new Vector2(850, 250), 15);
             } else {
                 idleAnim.animate();
             }
@@ -74,6 +74,16 @@ public class Enemy extends Fighter
             }  
         }
     }    
+    
+    /*
+     * increase health and strength by player's score
+     */
+    public void setDifficulty(int playerScore) {
+        this.maxHp += (int)((float) playerScore / 7f);
+        this.hp = maxHp;
+        this.minAtk += (int)((float) playerScore / 15f);
+        this.maxAtk += (int)((float) playerScore / 15f);
+    }
     
     /**
      * Return score (to give to player) based off attack damage and heatlh

@@ -26,12 +26,14 @@ public class GameWorld extends World {
         playerHealthbar = new Healthbar(player, "left");
         addObject(playerHealthbar, 220, 80);
         
-        enemy = new Zombie();
+        enemy = new ZombieM();
         addObject(enemy, 0, 0);
         enemyScore = enemy.getCombatScore();
         enemyHealthbar = new Healthbar(enemy, "right");
         addObject(enemyHealthbar, 780, 80); 
         
+        Image scoreT = new Image(null, new GreenfootImage("SCORE", 50, Color.WHITE, new Color(0,0,0,0)));
+        addObject(scoreT, 500, 30);
         scoreText = new Image(null, new GreenfootImage("0", 50, Color.WHITE, new Color(0,0,0,0)));
         addObject(scoreText, 500, 80);
         
@@ -73,8 +75,14 @@ public class GameWorld extends World {
         if (enemy.isDead()) {
             enemyTimer++;
             if (enemyTimer > 60 * 3) {
-                // random subclass (not zombie)
-                enemy = new Zombie();
+                if (Utils.random() <= 0.10) { // 10% chance spawning boss
+                    enemy = new JackBoss();
+                } else {
+                    Enemy[] chooseFrom = { new ZombieM(), new ZombieF(), new NinjaM(), new NinjaF() };
+                    int idx = Utils.random(0, chooseFrom.length-1);
+                    enemy = chooseFrom[idx];
+                } 
+                enemy.setDifficulty(score);
                 enemyHealthbar.setFighter(enemy);
                 addObject(enemy, 0, 0);
                 enemyTimer=0;
