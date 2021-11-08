@@ -74,4 +74,14 @@ public class Enemy extends Fighter
             }  
         }
     }    
+    
+    /**
+     * Return score (to give to player) based off attack damage and heatlh
+     */
+    public int getCombatScore() {
+        float h = (float) maxHp / 5f;
+        float a = (float) Utils.random(minAtk, maxAtk) / 2f;
+        return (int)(a+h);
+    }
+    
 }
