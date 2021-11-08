@@ -10,7 +10,7 @@ public class Start extends GUI
 {
     GreenfootSound main = new GreenfootSound("mainMenu.mp3");
     public Start() {
-        setImage(new GreenfootImage("startButton.png"));
+        setImage(new GreenfootImage("/gui/tile002.png"));
         GreenfootImage image = getImage();
         image.scale(120,120);
         setImage(image); 
@@ -24,7 +24,7 @@ public class Start extends GUI
         main.playLoop();
         if(Greenfoot.mouseClicked(this)){
             main.stop();
-            Greenfoot.setWorld(new GameWorld());
+            Greenfoot.setWorld(new Tutorial());
         }
         
     }    

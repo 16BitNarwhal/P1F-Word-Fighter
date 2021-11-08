@@ -64,12 +64,24 @@ public class Enemy extends Fighter
                 moveTowards(player.getPos(), 15);
             } else {
                 attackAnim.animate();
-                if (attackAnim.finishedAnim()) {
-                    this.state = "idle"; 
+                if (attackAnim.finishedAnim()) { 
+                    GameWorld world = (GameWorld) getWorld();
+                    attack(world.getPlayer());
+                    this.state = "idle";
                     attackAnim.resetFrame();
                     runAnim.resetFrame();
                 }
             }  
         }
     }    
+    
+    /**
+     * Return score (to give to player) based off attack damage and heatlh
+     */
+    public int getCombatScore() {
+        float h = (float) maxHp / 5f;
+        float a = (float) Utils.random(minAtk, maxAtk) / 2f;
+        return (int)(a+h);
+    }
+    
 }

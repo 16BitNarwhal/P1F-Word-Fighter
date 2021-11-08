@@ -6,12 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World {
     
-    private int score=0;
+    private int score=0, enemyScore;
     private Player player;
     private Enemy enemy;
     private Healthbar playerHealthbar, enemyHealthbar;
     private LetterBox letterbox;
-    GreenfootSound battle = new GreenfootSound("FightTheme.mp3");
+    private GreenfootSound battle = new GreenfootSound("FightTheme.mp3");
+    private Image scoreText;
+    
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -26,8 +28,12 @@ public class GameWorld extends World {
         
         enemy = new Zombie();
         addObject(enemy, 0, 0);
+        enemyScore = enemy.getCombatScore();
         enemyHealthbar = new Healthbar(enemy, "right");
-        addObject(enemyHealthbar, 780, 80);
+        addObject(enemyHealthbar, 780, 80); 
+        
+        scoreText = new Image(null, new GreenfootImage("0", 50, Color.WHITE, new Color(0,0,0,0)));
+        addObject(scoreText, 500, 80);
         
         LetterBox letterbox = new LetterBox();
         addObject(letterbox, 210, 480);
@@ -38,8 +44,8 @@ public class GameWorld extends World {
         CheckWordButton checkButton = new CheckWordButton();
         addObject(checkButton, 900, 544);
         
-        WordFetcher.fetchWords();
-        
+        WordFetcher.fetchWords(); 
+                
         for (Image img : Image.getAllImages()) {
             addObject(img, 0, 0);
         }
@@ -47,20 +53,38 @@ public class GameWorld extends World {
     
     private long beatTimer=0; // time to beat enemy
     private long enemyTimer=0; // time before spawn new enemy
+    private boolean finishedGame=false;
     public void act() {
+        
+        // player is null, gameover
+        if (player.isDead()) {
+            if (!finishedGame) {
+                GameOver gameOverText = new GameOver(new Vector2(500, 380));
+                addObject(gameOverText, 0, 0);
+                
+                GameOverBtn gameOverBtn = new GameOverBtn();
+                addObject(gameOverBtn, 500, 400);
+                
+                finishedGame = true;
+            }
+        }
         
         // enemy is null, new enemy, update score
         if (enemy.isDead()) {
             enemyTimer++;
             if (enemyTimer > 60 * 3) {
                 // random subclass (not zombie)
-                enemy = new Zombie(); 
+                enemy = new Zombie();
                 enemyHealthbar.setFighter(enemy);
                 addObject(enemy, 0, 0);
                 enemyTimer=0;
-                beatTimer=0;
-            }
-        } 
+                
+                enemyScore = enemy.getCombatScore();
+                score += enemyScore;
+                scoreText.setImage(new GreenfootImage(String.valueOf(score), 50, Color.WHITE, new Color(0,0,0,0)));
+                beatTimer=0; 
+            } 
+        }
         
         beatTimer++;
         battle.playLoop();
