@@ -17,7 +17,8 @@ public class Tutorial extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
-        setBackground(new GreenfootImage("tutorial.png"));
+        setBackground(new GreenfootImage("updated tutorial.png"));
+        getBackground().scale(1000, 600);
     }
     public void act()
     {

@@ -10,8 +10,7 @@ public class GameWorld extends World {
     private Player player;
     private Enemy enemy;
     private Healthbar playerHealthbar, enemyHealthbar;
-    private LetterBox letterbox;
-    private GreenfootSound battle = new GreenfootSound("FightTheme.mp3");
+    private LetterBox letterbox; ;
     private Image scoreText;
     
     /**
@@ -51,6 +50,10 @@ public class GameWorld extends World {
         for (Image img : Image.getAllImages()) {
             addObject(img, 0, 0);
         }
+        
+        MainSound.stop();
+        MainSound.setSound(new GreenfootSound("FightTheme.mp3"));
+        MainSound.play();
     }
     
     private long beatTimer=0; // time to beat enemy
@@ -94,8 +97,7 @@ public class GameWorld extends World {
             } 
         }
         
-        beatTimer++;
-        battle.playLoop();
+        beatTimer++; 
         
     }
     
