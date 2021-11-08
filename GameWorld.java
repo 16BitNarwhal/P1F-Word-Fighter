@@ -53,8 +53,12 @@ public class GameWorld extends World {
         // player is null, gameover
         if (player.isDead()) {
             if (!finishedGame) {
-                GameOver gameOverText = new GameOver(new Vector2(500, 330));
+                GameOver gameOverText = new GameOver(new Vector2(500, 380));
                 addObject(gameOverText, 0, 0);
+                
+                GameOverBtn gameOverBtn = new GameOverBtn();
+                addObject(gameOverBtn, 500, 400);
+                
                 finishedGame = true;
             }
         }

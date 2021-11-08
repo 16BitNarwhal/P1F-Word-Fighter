@@ -20,8 +20,8 @@ public class GameOver extends GUI {
         setLocation(pos.getX(), pos.getY());
         if (Vector2.distance(pos, targetPos) > 1f) {
             Vector2 dir = Vector2.sub(targetPos, pos);
-            dir = dir.normalize(); 
-            pos = Vector2.add(pos, dir.mult(2)); 
+            dir = dir.normalize();
+            pos = Vector2.add(pos, dir.mult(2));
         }
     }
     

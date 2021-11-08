@@ -25,6 +25,6 @@ public class TitleScreen extends World
         Title title = new Title();
         addObject(title,475,350);
         Start startbutton = new Start();
-        addObject(startbutton,525,550);
+        addObject(startbutton,500,400);
     }
 }
