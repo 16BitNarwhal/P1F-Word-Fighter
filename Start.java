@@ -24,7 +24,7 @@ public class Start extends GUI
         main.playLoop();
         if(Greenfoot.mouseClicked(this)){
             main.stop();
-            Greenfoot.setWorld(new GameWorld());
+            Greenfoot.setWorld(new Tutorial());
         }
         
     }    
