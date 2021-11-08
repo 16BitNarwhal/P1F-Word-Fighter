@@ -64,7 +64,7 @@ public class Letter extends Mover
         this.picked = false;
         
         GreenfootImage theButton;
-        if (Utils.random() <= 0.3) { // 30% chance of creating vowel
+        if (Utils.random() <= 0.5) { // 50% chance of creating vowel
             int idx = Utils.random(vowels.length-1);
             letter = vowels[idx];
             theButton = new GreenfootImage("tileset/png/tiles/" + vowels[idx] + "_button.png");

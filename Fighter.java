@@ -22,7 +22,7 @@ public class Fighter extends Mover
         this.hp = hp;
         this.minAtk = minAtk;
         this.maxAtk = maxAtk; 
-        this.state = "enter"; 
+        this.state = "enter";
     }
     
     public void act() {
