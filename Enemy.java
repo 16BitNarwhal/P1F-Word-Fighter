@@ -79,7 +79,7 @@ public class Enemy extends Fighter
      * increase health and strength by player's score
      */
     public void setDifficulty(int playerScore) {
-        this.maxHp = (int)((float) playerScore / 7f);
+        this.maxHp += (int)((float) playerScore / 7f);
         this.hp = maxHp;
         this.minAtk += (int)((float) playerScore / 15f);
         this.maxAtk += (int)((float) playerScore / 15f);

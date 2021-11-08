@@ -46,7 +46,10 @@ public class Fighter extends Mover
      * lose a certain amount of heatlh
      */
     public void loseHp(int atk) {
-        this.hp -= atk; 
+        this.hp -= atk;
+        if (this.hp<0) {
+            this.hp=0;
+        }
     }
     
     /**
@@ -77,5 +80,6 @@ public class Fighter extends Mover
     public String getState() { return this.state; }
     public boolean isDead() { return this.hp <= 0; } 
     public float getHpLoss() { return 1.0f - ((float)this.hp / (float)this.maxHp); }
+    public int getHp() { return this.hp; }
     
 }

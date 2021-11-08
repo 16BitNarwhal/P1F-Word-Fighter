@@ -79,7 +79,7 @@ public class GameWorld extends World {
                     Enemy[] chooseFrom = { new ZombieM(), new ZombieF(), new NinjaM(), new NinjaF() };
                     int idx = Utils.random(0, chooseFrom.length-1);
                     enemy = chooseFrom[idx];
-                }
+                } 
                 enemy.setDifficulty(score);
                 enemyHealthbar.setFighter(enemy);
                 addObject(enemy, 0, 0);
