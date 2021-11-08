@@ -13,8 +13,7 @@ public class TitleScreen extends World
      * Constructor for objects of class TItleScreen.
      * 
      */
-    public TitleScreen()
-    {     
+    public TitleScreen() {
         super(1000, 600, 1);
         addObject(new TitleScreenPlayer(),0,0);
         prepare();

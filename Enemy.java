@@ -64,8 +64,10 @@ public class Enemy extends Fighter
                 moveTowards(player.getPos(), 15);
             } else {
                 attackAnim.animate();
-                if (attackAnim.finishedAnim()) {
-                    this.state = "idle"; 
+                if (attackAnim.finishedAnim()) { 
+                    GameWorld world = (GameWorld) getWorld();
+                    attack(world.getPlayer());
+                    this.state = "idle";
                     attackAnim.resetFrame();
                     runAnim.resetFrame();
                 }

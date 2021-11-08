@@ -38,8 +38,8 @@ public class GameWorld extends World {
         CheckWordButton checkButton = new CheckWordButton();
         addObject(checkButton, 900, 544);
         
-        WordFetcher.fetchWords();
-        
+        WordFetcher.fetchWords(); 
+                
         for (Image img : Image.getAllImages()) {
             addObject(img, 0, 0);
         }
@@ -47,20 +47,30 @@ public class GameWorld extends World {
     
     private long beatTimer=0; // time to beat enemy
     private long enemyTimer=0; // time before spawn new enemy
+    private boolean finishedGame=false;
     public void act() {
+        
+        // player is null, gameover
+        if (player.isDead()) {
+            if (!finishedGame) {
+                GameOver gameOverText = new GameOver(new Vector2(500, 330));
+                addObject(gameOverText, 0, 0);
+                finishedGame = true;
+            }
+        }
         
         // enemy is null, new enemy, update score
         if (enemy.isDead()) {
             enemyTimer++;
             if (enemyTimer > 60 * 3) {
                 // random subclass (not zombie)
-                enemy = new Zombie(); 
+                enemy = new Zombie();
                 enemyHealthbar.setFighter(enemy);
                 addObject(enemy, 0, 0);
                 enemyTimer=0;
                 beatTimer=0;
             }
-        } 
+        }
         
         beatTimer++;
         battle.playLoop();
