@@ -19,8 +19,8 @@ public class GameOverBtn extends GUI {
             getImage().setTransparency(transparency);
             transparency+=2;
         } else {
-            if (Greenfoot.mouseClicked(this)) {
-                Greenfoot.setWorld(new TitleScreen());
+            if (Greenfoot.mouseClicked(this)) { 
+                Greenfoot.setWorld(new TItleScreen());
             }
         }
     }
