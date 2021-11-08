@@ -32,6 +32,8 @@ public class GameWorld extends World {
         enemyHealthbar = new Healthbar(enemy, "right");
         addObject(enemyHealthbar, 780, 80); 
         
+        Image scoreT = new Image(null, new GreenfootImage("SCORE", 50, Color.WHITE, new Color(0,0,0,0)));
+        addObject(scoreT, 500, 30);
         scoreText = new Image(null, new GreenfootImage("0", 50, Color.WHITE, new Color(0,0,0,0)));
         addObject(scoreText, 500, 80);
         
