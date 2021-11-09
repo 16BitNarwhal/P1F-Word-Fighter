@@ -17,7 +17,11 @@ public class MainSound {
     }
     
     public static void stop() {
-        sound.stop();  
+        try {
+            sound.stop();  
+        } catch (Exception e) {
+            
+        }
     }
     
 }

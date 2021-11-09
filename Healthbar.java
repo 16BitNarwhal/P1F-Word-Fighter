@@ -36,7 +36,7 @@ public class Healthbar extends GUI {
         // update health based on fighter health
         setImage(new GreenfootImage("healthbarBg.png"));
         GreenfootImage fill = getImage();
-        fill.setColor(Color.RED);        
+        fill.setColor(Color.RED); 
         int loss = (int)(290f * fighter.getHpLoss());
         if (this.location == "left") {
             fill.fillRect(33, 18, 290 - loss, 50);

@@ -14,6 +14,7 @@ public class Start extends GUI
         image.scale(120,120);
         setImage(image); 
          
+        MainSound.stop();
         MainSound.setSound(new GreenfootSound("mainMenu.mp3"));
         MainSound.play(); 
     }
@@ -23,7 +24,7 @@ public class Start extends GUI
      */
     public void act() 
     { 
-        if(Greenfoot.mouseClicked(this)) { 
+        if(Greenfoot.mouseClicked(this)) {
             Greenfoot.setWorld(new Tutorial());
         }
         

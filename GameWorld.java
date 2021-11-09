@@ -12,9 +12,7 @@ public class GameWorld extends World {
     public static Healthbar playerHealthbar, enemyHealthbar;
     private LetterBox letterbox; ;
     private Image scoreText;
-    private Image scoreT;
-    private Box box;
-    private Box box2;
+    private Image scoreT; 
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -22,6 +20,7 @@ public class GameWorld extends World {
     public GameWorld() {     
         super(1000, 600, 1); 
         setBackground(new GreenfootImage("gameBackground.png"));
+        Image.clearImages();
 
         player = new Player();
         addObject(player, 0, 0);
@@ -51,13 +50,10 @@ public class GameWorld extends World {
         WordFetcher.fetchWords(); 
                 
         for (Image img : Image.getAllImages()) {
+            System.out.println(img.getParent());
             addObject(img, 0, 0);
         }
         
-        box = new Box(new GreenfootImage("box.png")); 
-        addObject(box, 15, 11);
-        box2 = new Box(new GreenfootImage("otherBox.png"));
-        addObject(box2, 20, 5);
         MainSound.stop();
         MainSound.setSound(new GreenfootSound("FightTheme.mp3"));
         MainSound.play();

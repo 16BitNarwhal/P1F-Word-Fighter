@@ -12,8 +12,8 @@ public class Image extends GUI {
     
     private static ArrayList<Image> allImages = new ArrayList<Image>();
     
-    Actor parent;
-    Vector2 pos, offset;
+    private Actor parent;
+    private Vector2 pos, offset;
     
     public Image(Actor pa, GreenfootImage image) {
         this(pa, image, new Vector2());
@@ -27,7 +27,7 @@ public class Image extends GUI {
     }
     
     public void act() {
-        try {
+        try { 
             pos = Vector2.add(new Vector2(this.parent.getX(), this.parent.getY()), offset);
             setLocation(pos.getX(), pos.getY());
         } catch(Exception e) {
@@ -37,6 +37,14 @@ public class Image extends GUI {
     
     public static ArrayList<Image> getAllImages() {
         return allImages;
+    }
+    
+    public static void clearImages() {
+        allImages.clear();
+    }
+    
+    public Actor getParent() {
+        return this.parent;
     }
     
 }
