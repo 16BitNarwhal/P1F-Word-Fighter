@@ -14,4 +14,9 @@ Click the letters in the letterbox to form words.
 Click the green thumbs-up button once you have formed a word. 
 Make words to attack the enemy, and survive as long as you can!
 
-Kevin Wang's Personal Reflection:
+Data structures used:
+ArrayList<String> in WordFetcher.java
+GreenfootImage[][] in Animation.java
+ArrayList<Letter> in FinishedWordBox.java
+char[] consonants and char[] vowels in Letter.java
+Letters[][] letters and char[] arr in LetterBox.java
