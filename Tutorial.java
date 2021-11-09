@@ -22,8 +22,8 @@ public class Tutorial extends World
     }
     
     /**
-     * Act - do whatever the GUI wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Checks if the y key is pressed down every frame. 
+     * If so, change world.
      */
     public void act()
     {

@@ -22,7 +22,7 @@ public class TItleScreen extends World
     }
     
     /**
-     * prepares some objects
+     * Prepares the title screen.
      */
     private void prepare()
     {

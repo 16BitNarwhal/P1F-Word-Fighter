@@ -63,8 +63,8 @@ public class GameWorld extends World {
     private long enemyTimer=0; // time before spawn new enemy
     private boolean finishedGame=false;
     /**
-     * Act - do whatever the GUI wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Adds an enemy for the player to battle whenever the previous enemy is dead.
+     * If the player is dead, end the game and display "GAME OVER"
      */
     public void act() {
         

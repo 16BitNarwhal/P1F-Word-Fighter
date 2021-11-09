@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class CheckWordButton extends GUI
 {
     private GreenfootImage theButton = new GreenfootImage("gui/tile078.png");
-    
+    private GreenfootSound wrong = new GreenfootSound("wrongAnswer.mp3");
     /**
      *The constructor for the CheckWordButton class.
      *100x100 image of the button
@@ -35,6 +35,10 @@ public class CheckWordButton extends GUI
                     world.getPlayer().attack();
                 }
             } 
+            else
+            {
+                wrong.play();
+            }
         }
     }    
     
