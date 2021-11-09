@@ -10,7 +10,7 @@ public class JackBoss extends Enemy {
     
     public JackBoss() {
         // totally not overpowered
-        super(10, 1, 100, 20);
+        super(10, 1, 100, 5);
         
         initAnim("jack/Slide", 10,
             "jack/Idle", 10,

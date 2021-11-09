@@ -12,7 +12,9 @@ public class GameWorld extends World {
     private Healthbar playerHealthbar, enemyHealthbar;
     private LetterBox letterbox; ;
     private Image scoreText;
-    
+    private Image scoreT;
+    private Box box;
+    private Box box2;
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -20,6 +22,7 @@ public class GameWorld extends World {
     public GameWorld() {     
         super(1000, 600, 1); 
         setBackground(new GreenfootImage("gameBackground.png"));
+
         player = new Player();
         addObject(player, 0, 0);
         playerHealthbar = new Healthbar(player, "left");
@@ -31,7 +34,7 @@ public class GameWorld extends World {
         enemyHealthbar = new Healthbar(enemy, "right");
         addObject(enemyHealthbar, 780, 80); 
         
-        Image scoreT = new Image(null, new GreenfootImage("SCORE", 50, Color.WHITE, new Color(0,0,0,0)));
+        scoreT = new Image(null, new GreenfootImage("SCORE", 50, Color.WHITE, new Color(0,0,0,0)));
         addObject(scoreT, 500, 30);
         scoreText = new Image(null, new GreenfootImage("0", 50, Color.WHITE, new Color(0,0,0,0)));
         addObject(scoreText, 500, 80);
@@ -51,6 +54,10 @@ public class GameWorld extends World {
             addObject(img, 0, 0);
         }
         
+        box = new Box(new GreenfootImage("box.png")); 
+        addObject(box, 15, 11);
+        box2 = new Box(new GreenfootImage("otherBox.png"));
+        addObject(box2, 20, 5);
         MainSound.stop();
         MainSound.setSound(new GreenfootSound("FightTheme.mp3"));
         MainSound.play();
