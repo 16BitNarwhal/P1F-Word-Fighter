@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ZombieM extends Enemy
 {
     public ZombieM() {
-        super(20, 7, 1000, 10);
+        super(20, 7, 10, 10);
         
         initAnim("zombie/male/Attack", 8,
             "zombie/male/Idle", 15,

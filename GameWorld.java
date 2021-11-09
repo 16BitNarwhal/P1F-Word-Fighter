@@ -49,8 +49,7 @@ public class GameWorld extends World {
         
         WordFetcher.fetchWords(); 
                 
-        for (Image img : Image.getAllImages()) {
-            System.out.println(img.getParent());
+        for (Image img : Image.getAllImages()) { 
             addObject(img, 0, 0);
         }
         
