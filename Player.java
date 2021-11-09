@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player extends Fighter
 {
     private Enemy enemy; 
-    
+    private GreenfootSound sword = new GreenfootSound("swordSlash.mp3");
     public Player() {
         super(new Vector2(0,250), 100, 5, 10);
         
@@ -61,6 +61,7 @@ public class Player extends Fighter
                     // enemy.losehealth
                     GameWorld world = (GameWorld) getWorld();
                     super.attack(world.getEnemy());
+                    sword.play();
                     this.state = "idle"; 
                     attackAnim.resetFrame();
                     runAnim.resetFrame();

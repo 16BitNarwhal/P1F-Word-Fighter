@@ -10,7 +10,7 @@ public class Enemy extends Fighter
     private long atkCooldown;
     private long atkTimer;
     private Player player;
-    
+    private GreenfootSound hit = new GreenfootSound("hurt.mp3");
     /**
      * Initialize Enemy
      */
@@ -67,6 +67,7 @@ public class Enemy extends Fighter
                 if (attackAnim.finishedAnim()) { 
                     GameWorld world = (GameWorld) getWorld();
                     attack(world.getPlayer());
+                    hit.play();
                     this.state = "idle";
                     attackAnim.resetFrame();
                     runAnim.resetFrame();
