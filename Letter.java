@@ -18,7 +18,9 @@ public class Letter extends Mover
     private char letter;
     
     /**
-     * Construct initialPos
+     * Construct a letter
+     * 
+     * @param Vector2 initial position
      */
     public Letter(Vector2 initialPos) {
         super(initialPos);
@@ -52,6 +54,9 @@ public class Letter extends Mover
         }
     }
     
+    /**
+     * updates the letter's position
+     */
     public void updatePos() {
         int idx = FinishedWordBox.getIndex(this);
         Vector2 newPos = new Vector2(525, 454);
@@ -59,10 +64,17 @@ public class Letter extends Mover
         this.setPos(newPos);
     }
     
+    /**
+     * returns the character held by the letter
+     * @return character
+     */
     public char getLetter() {
         return this.letter;
     }
     
+    /**
+     * reinitializes the letter with a new random character from a - z
+     */
     public void newLetter() {
         this.picked = false;
         

@@ -20,6 +20,11 @@ public class Tutorial extends World
         setBackground(new GreenfootImage("updated tutorial.png"));
         getBackground().scale(1000, 600);
     }
+    
+    /**
+     * Act - do whatever the GUI wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         if(Greenfoot.isKeyDown("y"))

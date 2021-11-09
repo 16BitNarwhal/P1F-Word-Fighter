@@ -20,6 +20,10 @@ public class TItleScreen extends World
         setBackground(new GreenfootImage("titleScreen.png"));
         
     }
+    
+    /**
+     * prepares some objects
+     */
     private void prepare()
     {
         Title title = new Title();
