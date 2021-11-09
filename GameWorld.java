@@ -9,7 +9,7 @@ public class GameWorld extends World {
     private int score=0, enemyScore;
     private Player player;
     private Enemy enemy;
-    private Healthbar playerHealthbar, enemyHealthbar;
+    public static Healthbar playerHealthbar, enemyHealthbar;
     private LetterBox letterbox; ;
     private Image scoreText;
     private Image scoreT;
@@ -114,4 +114,10 @@ public class GameWorld extends World {
     public Player getPlayer() { return this.player; }    
     public Enemy getEnemy() { return this.enemy; }
     public LetterBox getLetterBox() { return this.letterbox; }
+    public static Healthbar getPlayerHealthBar(){return playerHealthbar;}
+    public static Healthbar getEnemyHealthBar(){return enemyHealthbar;}
+    public static void setPBar(Healthbar healthbar)
+    {
+        playerHealthbar = healthbar;
+    }
 }

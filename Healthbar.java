@@ -14,7 +14,6 @@ public class Healthbar extends GUI {
     private Image hpText;
     
     public Healthbar(Fighter fighter, String loc) {
-        
         this.fighter = fighter;
         this.location = loc;
         setImage(new GreenfootImage("healthbarBg.png"));
@@ -52,4 +51,7 @@ public class Healthbar extends GUI {
         this.fighter = fighter;
     }
     
+    public void removeHpText(){
+        getWorld().removeObject(hpText);
+    }
 }
