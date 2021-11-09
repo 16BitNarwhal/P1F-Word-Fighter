@@ -1,13 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Start here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ *
  */
 public class Start extends GUI
 {  
+    /**
+     * Instantiates a new Start button.
+     */
     public Start() {
         setImage(new GreenfootImage("/gui/tile002.png"));
         GreenfootImage image = getImage();
@@ -19,8 +19,8 @@ public class Start extends GUI
         MainSound.play(); 
     }
     /**
-     * Act - do whatever the Start wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Checks each frame if it is pressed.
+     * If so, change the world.
      */
     public void act() 
     { 
