@@ -1,15 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Zombie here.
+ * Zombie enemy (male ver.) that attacks player
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class ZombieM extends Enemy
 {
+    /**
+     * Construct a ZombieM
+     */
     public ZombieM() {
-        super(20, 7, 1000, 10);
+        super(20, 7, 10, 10);
         
         initAnim("zombie/male/Attack", 8,
             "zombie/male/Idle", 15,

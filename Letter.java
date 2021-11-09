@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo);
 import java.util.ArrayList;
 /**
  * Letter class
- * For making words
+ * Moves around to make words
  * 
  */
 public class Letter extends Mover
@@ -17,6 +17,9 @@ public class Letter extends Mover
     private Vector2 initPos; 
     private char letter;
     
+    /**
+     * Construct initialPos
+     */
     public Letter(Vector2 initialPos) {
         super(initialPos);
         this.initPos = initialPos;

@@ -50,8 +50,4 @@ public class Healthbar extends GUI {
     public void setFighter(Fighter fighter) {
         this.fighter = fighter;
     }
-    
-    public void removeHpText(){
-        getWorld().removeObject(hpText);
-    }
 }

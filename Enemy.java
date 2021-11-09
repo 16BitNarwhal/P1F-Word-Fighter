@@ -1,8 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Enemy class
- * Entities that 'fight' the player
+ * Enemy fights and attacks the player
  * 
  */
 public class Enemy extends Fighter
@@ -11,8 +10,14 @@ public class Enemy extends Fighter
     private long atkTimer;
     private Player player;
     private GreenfootSound hit = new GreenfootSound("hurt.mp3");
+    
     /**
-     * Initialize Enemy
+     * Construct an enemy
+     * 
+     * @param int Health
+     * @param int Minimum attack damage
+     * @param int Maximum attack damage
+     * @param float Cooldown time between attacks
      */
     public Enemy(int hp, int minAtk, int maxAtk, float atkCooldown) {
         super(new Vector2(1000, 250), hp, minAtk, maxAtk);
@@ -23,7 +28,7 @@ public class Enemy extends Fighter
     
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * the 'Act' or 'Run' butactton gets pressed in the environment.
      */
     public void act() {
         super.act();
@@ -76,8 +81,10 @@ public class Enemy extends Fighter
         }
     }    
     
-    /*
+    /**
      * increase health and strength by player's score
+     * 
+     * @param int Player's current score
      */
     public void setDifficulty(int playerScore) {
         this.maxHp += (int)((float) playerScore / 7f);
@@ -87,7 +94,9 @@ public class Enemy extends Fighter
     }
     
     /**
-     * Return score (to give to player) based off attack damage and heatlh
+     * Return score (to give to player) based off attack damage and health
+     * 
+     * @return Combat score
      */
     public int getCombatScore() {
         float h = (float) maxHp / 5f;

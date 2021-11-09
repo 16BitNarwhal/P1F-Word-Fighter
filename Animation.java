@@ -1,7 +1,8 @@
 
 import greenfoot.*;
 /**
- * Animation component of an actor
+ * Animation component
+ * For animating actors
  * 
  */
 public class Animation  
@@ -13,7 +14,7 @@ public class Animation
     private int dir=0; // 0: right, 1: left
 
     /**
-     * Constructor for objects of class Animation
+     * Constructor for Animation
      */
     public Animation(Actor actor, String filepath, int numberFrames, int fps, double scale) {
         this.actor = actor;
@@ -43,7 +44,8 @@ public class Animation
     }
     
     /**
-     * returns true on last frame
+     * Returns whether the animation clip has finished (on last frame)
+     * @return anim is finished
      */
     protected boolean finishedAnim() {
         int fr = 60 / fps;
@@ -51,7 +53,8 @@ public class Animation
     }
     
     /**
-     * set direction index (0: face right, 1: face left)
+     * set direction of animation (0: face right, 1: face left)
+     * @return direction
      */
     public void setDir(int dir) {
         this.dir = dir;
@@ -59,6 +62,8 @@ public class Animation
     
     /**
      * set direction based on movement
+     * 
+     * @param Vector2 movement
      */    
     public void setDir(Vector2 move) { 
         if (move.getX()>0) {
@@ -71,12 +76,16 @@ public class Animation
     }
     
     /**
-     * Getters and setters
+     * reset the animation (back to first frame)
      */
     public void resetFrame() { 
         frame = 0;
     }
     
+    /**
+     * returns the fps of the animation
+     * @return fps
+     */
     public int getFPS() { 
         return this.fps;
     }
