@@ -2,17 +2,19 @@ import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
 /**
- * Write a description of class Word_Fetcher here.
+ * WordFetcher class for fetching words from the internet
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class WordFetcher  
-{
-    // instance variables - replace the example below with your own
+{ 
     private static String url = "https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-no-swears.txt";
     private static ArrayList<String> wordList;
     
+    /**
+     * Reads the words from url into a list
+     * 
+     * @param ArrayList<String> list
+     */
     public static void readInto(ArrayList<String> list) throws Exception {
         URL wordsURL = new URL(url);
         BufferedReader in = new BufferedReader(
@@ -25,7 +27,7 @@ public class WordFetcher
     }
     
     /**
-     * Fetch words in to arraylist
+     * Fetch words in to static arraylist
      */
     public static void fetchWords() {
         wordList = new ArrayList<String>();
@@ -37,10 +39,18 @@ public class WordFetcher
         }
     }
     
+    /**
+     * Returns the word list
+     * @return list
+     */
     public static ArrayList<String> getList() {
         return wordList;
     }
     
+    /**
+     * Checks if the given word is valid (in the list of words)
+     * @return word in list
+     */
     public static boolean checkWord(String word) { 
         for(String str : wordList) {
             if (word.equals(str)) {

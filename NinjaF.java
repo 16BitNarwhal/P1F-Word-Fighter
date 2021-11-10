@@ -1,12 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Zombie here.
+ * Ninja enemy (female ver.) that attacks player
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class NinjaF extends Enemy {
+    
+    /**
+     * Constructs a NinjaF
+     */
     public NinjaF() {
         super(10, 7, 9, 5);
         

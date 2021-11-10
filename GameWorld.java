@@ -13,6 +13,7 @@ public class GameWorld extends World {
     private LetterBox letterbox; ;
     private Image scoreText;
     private Image scoreT; 
+    
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -61,6 +62,10 @@ public class GameWorld extends World {
     private long beatTimer=0; // time to beat enemy
     private long enemyTimer=0; // time before spawn new enemy
     private boolean finishedGame=false;
+    /**
+     * Adds an enemy for the player to battle whenever the previous enemy is dead.
+     * If the player is dead, end the game and display "GAME OVER"
+     */
     public void act() {
         
         // player is null, gameover
@@ -104,14 +109,40 @@ public class GameWorld extends World {
     }
     
     /**
-     * Getters and setters
+     * returns the world's player
+     * @return player
      */
-    public Player getPlayer() { return this.player; }    
+    public Player getPlayer() { return this.player; }
+    
+    /**
+     * returns the current enemy
+     * @return enemy
+     */
     public Enemy getEnemy() { return this.enemy; }
+    
+    /**
+     * returns the box containing letters
+     * @return letter box
+     */
     public LetterBox getLetterBox() { return this.letterbox; }
+    
+    /**
+     * returns the player's health bar
+     * @return player healthbar
+     */
     public static Healthbar getPlayerHealthBar(){return playerHealthbar;}
+    
+    /**
+     * returns the enemy's health bar
+     * @return enemy healthbar
+     */
     public static Healthbar getEnemyHealthBar(){return enemyHealthbar;}
-    public static void setPBar(Healthbar healthbar)
+    
+    /**
+     * sets the player health bar
+     * @param Healthbar healthbar
+     */
+    public static void setPBar(Healthbar healthbar) 
     {
         playerHealthbar = healthbar;
     }

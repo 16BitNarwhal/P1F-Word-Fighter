@@ -1,14 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Player class
- * Controls the player
+ * Player character that fights enemies
  * 
  */
 public class Player extends Fighter
 {
     private Enemy enemy; 
     private GreenfootSound sword = new GreenfootSound("swordSlash.mp3");
+    
+    /**
+     * Construct a Player
+     */
     public Player() {
         super(new Vector2(0,250), 100, 5, 10);
         
@@ -70,6 +73,9 @@ public class Player extends Fighter
         }
     }
     
+    /**
+     * Make's the player attack
+     */
     public void attack() { 
         this.state = "attack";
         runAnim.resetFrame();

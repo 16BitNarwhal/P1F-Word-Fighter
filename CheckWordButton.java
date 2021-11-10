@@ -1,15 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class CheckWordButton here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ *The button that checks if a word is present in the 
+ *finished word box.
  */
 public class CheckWordButton extends GUI
 {
     private GreenfootImage theButton = new GreenfootImage("gui/tile078.png");
-    
+    private GreenfootSound wrong = new GreenfootSound("wrongAnswer.mp3");
+    /**
+     *The constructor for the CheckWordButton class.
+     *100x100 image of the button
+     */
+    public CheckWordButton() {
+        theButton.scale(100, 100);
+        this.setImage(theButton);
+    }
+
+    /**
+     * Checks if it is clicked every frame. 
+     * If so, checks for word
+     * Word cannot be smaller than 2 letters
+     */
     public void act() 
     {
         if(Greenfoot.mouseClicked(this)) {
@@ -22,14 +34,13 @@ public class CheckWordButton extends GUI
                     if (world.getEnemy().isDead()) return;
                     world.getPlayer().attack();
                 }
-            } else {
-                // red X
+            } 
+            else
+            {
+                wrong.play();
             }
         }
     }    
     
-    public CheckWordButton() {
-        theButton.scale(100, 100);
-        this.setImage(theButton);
-    }
+    
 }

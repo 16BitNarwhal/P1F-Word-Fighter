@@ -1,11 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * TitleScreenPlayer class
+ * Player that contiously moves right (for the title screen)
  * 
  */
 public class TitleScreenPlayer extends Player
 {
+    /**
+     * Construct a TitleScreenPlayer
+     */
     public TitleScreenPlayer() {
         super();
         setPos(new Vector2(0,400));

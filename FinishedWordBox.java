@@ -1,16 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class FinishedWordBox here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ *
  */
 public class FinishedWordBox extends GUI
 {
     private static ArrayList<Letter> word;
     private static int maxLetters = 5;
     
+    /**
+     * The constructor for the finished word box.
+     * Sets the image and size to 488 x 94 and initializes the arraylist that holds the word. 
+     */
     public FinishedWordBox() {
         this.setImage("finishedWordBox.png");
         GreenfootImage image = getImage();
@@ -18,6 +19,9 @@ public class FinishedWordBox extends GUI
         word = new ArrayList<Letter>(); 
     }
     
+    /**
+     * Returns the index of a letter in the word arraylist.
+     */
     public static int getIndex(Letter letter) {
         for (int i=0;i<word.size();i++) {
             if (letter == word.get(i)) {
@@ -27,6 +31,9 @@ public class FinishedWordBox extends GUI
         return -1;
     }
     
+    /**
+     * Removes a letter from the word arraylist and shifts everything back one index
+     */
     public static void removeLetter(Letter letter) {
         word.remove(letter);
         for (int i=0;i<word.size();i++) {
@@ -34,6 +41,9 @@ public class FinishedWordBox extends GUI
         }
     }
     
+    /**
+     * Adds a letter onto the back end of the word
+     */
     public static void addLetter(Letter letter) {
         if (!isFull()) {
             word.add(letter);
@@ -41,6 +51,9 @@ public class FinishedWordBox extends GUI
         }
     }
     
+    /**
+     * Uses the word fetcher to check if the word in the arraylist is a valid word
+     */
     public static boolean checkWord() {
         String str = "";
         for (Letter l : word) {
@@ -49,6 +62,9 @@ public class FinishedWordBox extends GUI
         return WordFetcher.checkWord(str);
     }
     
+    /**
+     * Clears all letters from the arraylist
+     */
     public static void clearLetters() {
         for (int i=0;i<word.size();i++) {
             word.get(i).newLetter();
@@ -56,10 +72,16 @@ public class FinishedWordBox extends GUI
         word.clear();         
     }
     
+    /**
+     * Returns if the array is full
+     */
     public static boolean isFull() {
         return word.size()==maxLetters;
     }
     
+    /**
+     * Returns the arraylist containing the words
+     */
     public static ArrayList<Letter> getWord() {
         return word;
     } 

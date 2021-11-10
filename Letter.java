@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo);
 import java.util.ArrayList;
 /**
  * Letter class
- * For making words
+ * Moves around to make words
  * 
  */
 public class Letter extends Mover
@@ -17,6 +17,11 @@ public class Letter extends Mover
     private Vector2 initPos; 
     private char letter;
     
+    /**
+     * Construct a letter
+     * 
+     * @param Vector2 initial position
+     */
     public Letter(Vector2 initialPos) {
         super(initialPos);
         this.initPos = initialPos;
@@ -49,6 +54,9 @@ public class Letter extends Mover
         }
     }
     
+    /**
+     * updates the letter's position
+     */
     public void updatePos() {
         int idx = FinishedWordBox.getIndex(this);
         Vector2 newPos = new Vector2(525, 454);
@@ -56,10 +64,17 @@ public class Letter extends Mover
         this.setPos(newPos);
     }
     
+    /**
+     * returns the character held by the letter
+     * @return character
+     */
     public char getLetter() {
         return this.letter;
     }
     
+    /**
+     * reinitializes the letter with a new random character from a - z
+     */
     public void newLetter() {
         this.picked = false;
         
