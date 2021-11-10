@@ -20,6 +20,11 @@ public class Tutorial extends World
         setBackground(new GreenfootImage("updated tutorial.png"));
         getBackground().scale(1000, 600);
     }
+    
+    /**
+     * Checks if the y key is pressed down every frame. 
+     * If so, change world.
+     */
     public void act()
     {
         if(Greenfoot.isKeyDown("y"))

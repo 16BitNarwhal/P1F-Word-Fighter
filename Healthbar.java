@@ -1,10 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Heatlhbar here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+/** 
  */
 public class Healthbar extends GUI { 
     
@@ -13,6 +9,9 @@ public class Healthbar extends GUI {
     private String location;
     private Image hpText;
     
+    /**
+     * Starts a new healthbar, changing the location of the icon depending on if it is the player healthbar or enemy healthbar
+     */
     public Healthbar(Fighter fighter, String loc) {
         this.fighter = fighter;
         this.location = loc;
@@ -32,8 +31,10 @@ public class Healthbar extends GUI {
         hpText = new Image(this, new GreenfootImage(String.valueOf(fighter.getHp()), 50, Color.WHITE, new Color(0,0,0,0)));
     }
     
+    /**
+     * Updates the health every second
+     */
     public void act() {
-        // update health based on fighter health
         setImage(new GreenfootImage("healthbarBg.png"));
         GreenfootImage fill = getImage();
         fill.setColor(Color.RED); 
@@ -47,11 +48,10 @@ public class Healthbar extends GUI {
         hpText.setImage(new GreenfootImage(String.valueOf(fighter.getHp()), 50, Color.WHITE, new Color(0,0,0,0)));
     }
     
+    /**
+     * Sets the icon
+     */
     public void setFighter(Fighter fighter) {
         this.fighter = fighter;
-    }
-    
-    public void removeHpText(){
-        getWorld().removeObject(hpText);
     }
 }

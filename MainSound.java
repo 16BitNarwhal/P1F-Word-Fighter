@@ -1,21 +1,33 @@
 import greenfoot.*; 
 /**
- * Write a description of class SoundPlayer here.
+ * Game's main sound player
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class MainSound {
     
     private static GreenfootSound sound;
+    
+    /**
+     * sets the current sound
+     * 
+     * @param GreenfootSound sound
+     */
     public static void setSound(GreenfootSound s) {
         sound = s;
     }
     
+    /**
+     * plays the sound on repeat
+     * 
+     */
     public static void play() {
         sound.playLoop();
     }
     
+    /**
+     * stops the current sound playing (does nothing if there is no sound)
+     * 
+     */
     public static void stop() {
         try {
             sound.stop();  

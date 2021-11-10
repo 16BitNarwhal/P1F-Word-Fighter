@@ -1,13 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Zombie here.
+ * Jack boss enemy that attacks player
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class JackBoss extends Enemy {
     
+    /**
+     * Construct a JackBoss
+     */
     public JackBoss() {
         // totally not overpowered
         super(10, 1, 100, 5);

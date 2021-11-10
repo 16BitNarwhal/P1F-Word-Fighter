@@ -1,14 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LetterBox here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ *
  */
 public class LetterBox extends GUI
 {
     private Letter[][] letters = new Letter[2][4];
+
+    /**
+     * Instantiates a new 400x240 LetterBox. 
+     */
     public LetterBox() {
         this.setImage("letter square.png");
         GreenfootImage image = getImage();
@@ -16,6 +17,9 @@ public class LetterBox extends GUI
         
     }
     
+    /**
+     * Fills the letterbox with letters
+     */
     public void InitLetters() {
         Vector2 origin = new Vector2(60, 420);
         for (int i=0;i<2;i++) {
@@ -29,6 +33,10 @@ public class LetterBox extends GUI
     }
     
     boolean firstAct = true;
+    /**
+     * Runs every frame.
+     * If this is the first action, run.
+     */
     public void act() {
         if (firstAct) {
             InitLetters();
@@ -36,6 +44,9 @@ public class LetterBox extends GUI
         }
     }
     
+    /**
+     * Checks if there is a valid word in the box.
+     */
     public boolean checkLetters() {
         char[] arr = new char[8];
         for (int i=0;i<2;i++) {
