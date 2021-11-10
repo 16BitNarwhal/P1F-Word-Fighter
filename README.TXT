@@ -1,7 +1,7 @@
 =========================================================
 PROJECT TITLE: Word-Fighter
 PURPOSE OF PROJECT: To create a fun word game in a team environment, implement effective data structures, and have fun!
-VERSION or DATE: 1.0.0, November 9th, 2021
+VERSION or DATE: 1.0.1, November 10th, 2021
 HOW TO START THIS PROJECT: Click the "run" button to start the project.
 AUTHORS: Eric Zhang, Kevin Wang
 USER INSTRUCTIONS: 
