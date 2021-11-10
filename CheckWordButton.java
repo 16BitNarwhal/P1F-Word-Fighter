@@ -25,8 +25,8 @@ public class CheckWordButton extends GUI
     public void act() 
     {
         if(Greenfoot.mouseClicked(this)) {
-            if (FinishedWordBox.checkWord()) {
-                int size = FinishedWordBox.getWord().size();
+            int size = FinishedWordBox.getWord().size();
+            if (FinishedWordBox.checkWord()) { 
                 FinishedWordBox.clearLetters();
                 
                 if (size > 1) {
@@ -35,7 +35,7 @@ public class CheckWordButton extends GUI
                     world.getPlayer().attack();
                 }
             } 
-            else
+            else if (size > 0)
             {
                 wrong.play();
             }
